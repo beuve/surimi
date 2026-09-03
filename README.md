@@ -1,0 +1,1 @@
+![Surimi](docs/surimi.svg)
