@@ -1,10 +1,10 @@
 [build-system]
-requires = ["setuptools>=64"]
+requires = ["setuptools>=80", "setuptools-scm>=8"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "surimi"
-version = "0.1.0"
+dynamic = ["version"]
 description = "Simple test library fully written in python"
 readme = "README.md"
 requires-python = ">=3.8"
