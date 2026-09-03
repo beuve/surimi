@@ -3,6 +3,7 @@ from rich.console import Console
 from rich.panel import Panel
 from rich.syntax import Syntax
 from rich.text import Text
+from .data import TestResult
 
 def format_module_result(console: Console, num_module: int, total_modules: int, module: str, failed: bool, execution_time: float):
   if not failed : status = Text("[bold][green]PASSED[/green][/bold]")

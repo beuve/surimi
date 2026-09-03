@@ -1,11 +1,9 @@
-from .test_engine import Test
 import importlib
-from importlib.machinery import SourceFileLoader
 import sys
 import os
 from pathlib import Path 
 
-def register_tests(dir: str = '.'):
+def discover_tests(dir: str = '.'):
   test_locations = [
       dir,
       os.path.join(dir, 'src'),

@@ -1,15 +1,13 @@
+from rich.console import Console
 from dataclasses import dataclass
 from typing import Any, Callable
-from .test_runner import run_test
-from .test_result_formater import format_failed, format_module_result
-from rich.console import Console
 
 @dataclass
 class TestInfos:
   function: Callable[[], None]
   name: str
   location: str
-  fail_with: Any
+  fail_with: Exception
 
   def __call__(self):
     self.function()
@@ -38,25 +36,6 @@ class Test:
       return function
 
     return register
-
-  def run_tests(self, verbose):
-    console = Console()
-    for num_module, module in enumerate(self.registered_tests):
-      tests = self.registered_tests[module]
-      results = []
-      failed = False
-      total_time = 0
-      for test in tests:
-        res = run_test(test)
-        if not res.failed: failed = True
-        total_time += res.execution_time
-        results.append(res)
-
-      format_module_result(console, num_module+1, len(self.registered_tests), module, not failed, total_time)
-
-      first = True
-      for res in results:
-        if res.failed: format_failed(console, res, verbose)
 
 def proxy_test_decorator(*args, **kwargs):
   if args and callable(args[0]):

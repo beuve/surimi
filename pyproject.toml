@@ -3,7 +3,7 @@ requires = ["setuptools>=64"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "hermes"
+name = "surimi"
 version = "0.1.0"
 description = "Simple test library fully written in python"
 readme = "README.md"
@@ -14,8 +14,8 @@ authors = [{name = "Nicolas Beuve", email = "nicolas@beuve.net"}]
 dependencies = ["click", "rich"]
 
 [project.scripts]
-hermes = "hermes.cli:test"
+surimi = "surimi.cli:test"
 
 [tool.setuptools]
-packages = ["hermes"]
-package-dir = {hermes = "lib"}
+packages = ["surimi", "surimi.decorators"]
+package-dir = {"surimi" = "lib"}
