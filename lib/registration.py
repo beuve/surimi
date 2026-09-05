@@ -5,11 +5,12 @@ from pathlib import Path
 from rich.console import Console
 
 def discover_tests(console: Console, dir: str = None):
-  test_locations = [
-      './src',
-      './tests',
-  ]
+  config_file = Path(".surimi")
   if dir != None : test_locations = [dir]
+  elif config_file.exists() and dir == None: 
+    with open(config_file) as file:
+      test_locations = [f.strip() for f in file]
+  else: test_locations = ['./src', './tests']
   for test_location in test_locations:
     if not os.path.isdir(test_location):
       continue
