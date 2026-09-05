@@ -50,8 +50,7 @@ def run_single_test(test_info: TestInfos) -> TestResult:
     sys.stderr = old_stderr
 
 
-def run_tests(test: Test, verbose):
-  console = Console()
+def run_tests(test: Test, verbose, console: Console):
   for num_module, module in enumerate(test.registered_tests):
     tests = test.registered_tests[module]
     results = []

@@ -2,14 +2,14 @@ import importlib
 import sys
 import os
 from pathlib import Path 
+from rich.console import Console
 
-def discover_tests(dir: str = '.'):
+def discover_tests(console: Console, dir: str = None):
   test_locations = [
-      dir,
-      os.path.join(dir, 'src'),
-      os.path.join(dir, 'tests'),
+      './src',
+      './tests',
   ]
-  
+  if dir != None : test_locations = [dir]
   for test_location in test_locations:
     if not os.path.isdir(test_location):
       continue
@@ -28,5 +28,5 @@ def discover_tests(dir: str = '.'):
           try:
             importlib.import_module(module_name)
           except ImportError as e:
-            print(f"[red]Error importing {module_name}: {e}[/red]")
+            console.print(f'[red]Error importing {module_name}: {e}[/red]')
 
