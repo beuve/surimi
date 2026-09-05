@@ -16,6 +16,9 @@ dependencies = ["click", "rich"]
 [project.scripts]
 surimi = "surimi.cli:test"
 
+[tool.setuptools.package-data]
+surimi = ["./docs/surimi.svg"]
+
 [tool.setuptools]
 packages = ["surimi", "surimi.decorators"]
 package-dir = {"surimi" = "lib"}
